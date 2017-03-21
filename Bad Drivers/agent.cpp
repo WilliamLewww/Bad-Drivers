@@ -26,12 +26,33 @@ void Agent::Update(int deltaTime) {
 
 	for (Wall wall : environment->wallList) {
 		if (abs(wall.Center().x - Center().x) > abs(wall.Center().y - Center().y)) {
-			distance[2] = (wall.Center().x - Center().x) / cos((-rotation * M_PI) / 180);
+			if (wall.Center().x - Center().x > 0) { 
+				if ((rotation > -90 && rotation < 90) || rotation < -270 || rotation > 270) {
+					distance[2] = (wall.position.x - Center().x) / cos((-rotation * M_PI) / 180);
+				}
+			}
+			else { 
+				if ((rotation > 90 && rotation < 270) || (rotation > -270 && rotation < -90)) {
+					distance[2] = ((wall.position.x + wall.width) - Center().x) / cos((-rotation * M_PI) / 180);
+				}
+			}
 		}
 		else {
-			distance[2] = (wall.Center().y - Center().y) / sin((-rotation * M_PI) / 180);
+			if (wall.Center().y - Center().y > 0) { 
+				if ((rotation > 180) || (rotation > -180 && rotation < 0)) {
+					distance[2] = (wall.position.y - Center().y) / sin((-rotation * M_PI) / 180);
+				}
+			}
+			else { 
+				if ((rotation > 0 && rotation < 180) || rotation < -180) {
+					distance[2] = ((wall.position.y + wall.height) - Center().y) / sin((-rotation * M_PI) / 180);
+				}
+			}
 		}
 	}
+
+	if (rotation >= 360) { rotation -= 360; }
+	if (rotation <= -360) { rotation += 360; }
 
 	position += (direction[2].Get() * deltaTimeS) * velocity;
 }
