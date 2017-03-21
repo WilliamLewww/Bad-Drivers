@@ -14,6 +14,7 @@ struct Road {
 		height = h;
 	}
 
+	inline Vector2 Center() { return position.Get() + Vector2(width / 2, height / 2); }
 	inline void Draw() { DrawRect(position, width, height, color); }
 };
 
@@ -29,15 +30,16 @@ struct Wall {
 		height = h;
 	}
 
+	inline Vector2 Center() { return position.Get() + Vector2(width / 2, height / 2); }
 	inline void Draw() { DrawRect(position, width, height, color); }
 };
 
 class Environment {
+	std::vector<std::vector<int>> tileMap;
+public:
 	std::vector<Road> roadList;
 	std::vector<Wall> wallList;
 
-	std::vector<std::vector<int>> tileMap;
-public:
 	Environment(int) {
 		SetTileMap();
 		Generate();

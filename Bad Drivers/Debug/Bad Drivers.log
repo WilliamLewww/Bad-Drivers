@@ -1,9 +1,3 @@
-﻿  environment.cpp
-g:\projects\bad drivers\bad drivers\environment.cpp(25): warning C4018: '<': signed/unsigned mismatch
-g:\projects\bad drivers\bad drivers\environment.cpp(26): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Compiling...
-  main.cpp
-  Generating Code...
+﻿  agent.cpp
   Bad Drivers.vcxproj -> G:\Projects\Bad Drivers\Debug\Bad Drivers.exe
   Bad Drivers.vcxproj -> G:\Projects\Bad Drivers\Debug\Bad Drivers.pdb (Partial PDB)

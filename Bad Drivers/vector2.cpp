@@ -21,6 +21,22 @@ Vector2 Vector2::Abs() {
 	return *this;
 }
 
+double Vector2::Max() {
+	if (x > y) {
+		return x;
+	}
+
+	return y;
+}
+
+double Vector2::Min() {
+	if (x < y) {
+		return x;
+	}
+
+	return y;
+}
+
 Vector2 Vector2::Normalize() {
 	// | a | = sqrt((ax * ax) + (ay * ay) + (az * az))
 	// x = ax / | a |

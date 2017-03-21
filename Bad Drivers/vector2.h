@@ -6,6 +6,8 @@ public:
 
 	Vector2();
 	Vector2(double xArgs, double yArgs);
+	double Max();
+	double Min();
 	Vector2 Get();
 	Vector2 Normalize();
 	Vector2 Abs();

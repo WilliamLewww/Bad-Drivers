@@ -12,8 +12,8 @@ SDL_Event event;
 SDL_GLContext context;
 SDL_Window* displayWindow;
 
-Agent agent(Vector2(100,100));
 Environment environment(0);
+Agent agent(Vector2(100, 100), &environment);
 
 bool isRunning = true;
 int frameStart, frameEnd, deltaTime = 0;
