@@ -1,5 +1,9 @@
 #include "spritebatch.h"
 
+double ConvertColor(int rgbValue) {
+	return (double)rgbValue / 255;
+}
+
 void DrawRect(Vector2 position, int width, int height) {
 	Vector2 vectors[4]{
 		Vector2(0, 0),
@@ -30,7 +34,7 @@ void DrawRect(Vector2 position, int width, int height, double color[3]) {
 	};
 
 	glBegin(GL_QUADS);
-	glColor4f(color[0], color[1], color[2], 1);
+	glColor4f(ConvertColor(color[0]), ConvertColor(color[1]), ConvertColor(color[2]), 1);
 	for (int x = 0; x < 4; x++) {
 		vectors[x].x *= width;
 		vectors[x].y *= height;

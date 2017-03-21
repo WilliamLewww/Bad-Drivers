@@ -2,13 +2,18 @@
 #include <SDL_opengl.h>
 #include "input.h"
 #include "global.h"
+#include "environment.h"
+#include "agent.h"
 
-void Update(int gameTime);
-void Render(SDL_Window* window, SDL_GLContext context);
+void Update(int);
+void Render(SDL_Window*, SDL_GLContext);
 
 SDL_Event event;
 SDL_GLContext context;
 SDL_Window* displayWindow;
+
+Agent agent(Vector2(100,100));
+Environment environment(0);
 
 bool isRunning = true;
 int frameStart, frameEnd, deltaTime = 0;
@@ -42,14 +47,17 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-void Update(int gameTime) {
-
+void Update(int deltaTime) {
+	agent.Update(deltaTime);
 }
 
 void Render(SDL_Window* window, SDL_GLContext context) {
 	SDL_GL_MakeCurrent(window, context);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
+
+	environment.Draw();
+	agent.Draw();
 
 	SDL_GL_SwapWindow(window);
 }
