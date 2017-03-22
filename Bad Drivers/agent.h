@@ -25,6 +25,7 @@ public:
 	inline Vector2 Center() { return position.Get() + Vector2(width / 2, height / 2); }
 
 	void GetDirection();
+	void GetDistance();
 	void Update(int deltaTime);
 	void Draw();
 };
